@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm" class="custom-form">
+    <h1 class="display-6">Inicio de Sesion</h1>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Usuario</label>
+        <input formControlName="userName" type="email" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp">
+        <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="text-danger">
+            <div *ngIf="userName.errors?.['required']">Usuario requerido</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+        <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+            <div *ngIf="password.errors?.['required']">Contraseña es requerida.</div>
+        </div>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+        <div class="text-danger">
+            <div>{{messageError}}</div>
+        </div>
+        <button type="submit" (click)="login()" class="btn btn-primary mx-1">Iniciar Sesión</button>
+        <div class="text-decoration-underline text-secondary">
+            <div class="pointer" (click)="register()">¿Todavia no tienes una cuenta? Registrate</div>
+        </div>
+    </div>
+</form>
